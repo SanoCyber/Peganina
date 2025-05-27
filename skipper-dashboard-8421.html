@@ -10,24 +10,32 @@
 </head>
 <body class="bg-blue-50 text-gray-900">
   <script>
-    // Base64-encoded config to avoid GitHub secret scan
-    const encodedConfig = "eyJhcGlLZXkiOiJBSXphU3lEeTViRDZvaUpYMVpvRktUeGcybmlmVXkzeVVyRHdWLWciLCJhdXRoRG9tYWluIjoicGVnYW5hbmEtc2l0ZS5maXJlYmFzZWFwcC5jb20iLCJwcm9qZWN0SWQiOiJwZWdhbmFuYS1zaXRlIiwic3RvcmFnZUJ1Y2tldCI6InBlZ2FuYW5hLXNpdGUuZmlyZWJhc2VzdG9yYWdlLmFwcCIsIm1lc3NhZ2luZ1NlbmRlcklkIjoiNTE3Mjg4MzM5Njc3IiwiYXBwSWQiOiIxOjUxNzIjg4MzM5Njc3OndlYjoyN2FmZTg1MDJlMzQwMmYyZmM1MzM0IiwibWVhc3VyZW1lbnRJZCI6IkctV0tKNDg5U1I0NSJ9";
-    const firebaseConfig = JSON.parse(atob(encodedConfig));
+    // Your web app's Firebase configuration - directly defined
+    const firebaseConfig = {
+      apiKey: "AIzaSyDy5bD6oiJX1ZoFKTxg2nifUy3yUrDwV-g",
+      authDomain: "peganana-site.firebaseapp.com",
+      projectId: "peganana-site",
+      storageBucket: "peganana-site.firebasestorage.app",
+      messagingSenderId: "517288339677",
+      appId: "1:517288339677:web:27afe8502e3402f2fc5334",
+      measurementId: "G-WKJ489SR45"
+    };
 
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
 
     firebase.auth().onAuthStateChanged((user) => {
       if (!user) {
-        window.location.href = "skipper-login.html"; 
+        console.log("No user signed in on dashboard, redirecting to login.");
+        window.location.href = "skipper-login.html";
       } else {
-        console.log("User signed in:", user.email);
+        console.log("User signed in on dashboard:", user.email);
       }
     });
 
     function logout() {
       firebase.auth().signOut().then(() => {
-        console.log("Logged out successfully.");
+        console.log("Logged out successfully from dashboard.");
         window.location.href = "skipper-login.html"; 
       }).catch((error) => {
         console.error("Logout error:", error);
