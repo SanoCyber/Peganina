@@ -1,3 +1,4 @@
+<!-- skipper-login.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,18 +26,9 @@
   </div>
 
   <script>
-    // Your web app's Firebase configuration (NEW)
-    const firebaseConfig = {
-      apiKey: "AIzaSyD3qIYflyJawJJX3CdPpd7vHgSpl5Rct6g",
-      authDomain: "peganina-797dd.firebaseapp.com",
-      projectId: "peganina-797dd",
-      storageBucket: "peganina-797dd.firebasestorage.app",
-      messagingSenderId: "141039015162",
-      appId: "1:141039015162:web:c8a48f0ae54a6935d62543",
-      measurementId: "G-P6H7CM4B5J" // Optional, but included as per your snippet
-    };
+    const encodedConfig = "eyJhcGlLZXkiOiAiQUl6YVN5RHk1YkQ2b2lKWDFab0ZLVHhnMm5pZlV5M3lVckR3Vi1nIiwgImF1dGhEb21haW4iOiAicGVnYW5hbmEtc2l0ZS5maXJlYmFzZWFwcC5jb20iLCAicHJvamVjdElkIjogInBlZ2FuYW5hLXNpdGUiLCAic3RvcmFnZUJ1Y2tldCI6ICJwZWdhbmFuYS1zaXRlLmZpcmViYXNlc3RvcmFnZS5hcHAiLCAibWVzc2FnaW5nU2VuZGVySWQiOiAiNTE3Mjg4MzM5Njc3IiwgImFwcElkIjogIjE6NTE3Mjg4MzM5Njc3OndlYjoyN2FmZTg1MDJlMzQwMmYyZmM1MzM0IiwgIm1lYXN1cmVtZW50SWQiOiAiRy1XS0o0ODlTUjQ1In0=";
+    const firebaseConfig = JSON.parse(atob(encodedConfig));
 
-    // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
 
     document.getElementById("login-form").addEventListener("submit", function (e) {
@@ -46,11 +38,10 @@
 
       firebase.auth().signInWithEmailAndPassword(email, password)
         .then(() => {
-          window.location.href = "skipper-dashboard-8421.html"; // Ensure this filename is correct
+          window.location.href = "skipper-dashboard-8421.html";
         })
         .catch((error) => {
           alert("Login failed: " + error.message);
-          console.error("Login error details:", error); // Added for more detailed error logging
         });
     });
   </script>
