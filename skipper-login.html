@@ -25,21 +25,34 @@
   </div>
 
   <script>
-    const encodedConfig = "eyJhcGlLZXkiOiJBSXphU3lEeTViRDZvaUpYMVpvRktUeGcybmlmVXkzeVVyRHdWLWciLCJhdXRoRG9tYWluIjoicGVnYW5hbmEtc2l0ZS5maXJlYmFzZWFwcC5jb20iLCJwcm9qZWN0SWQiOiJwZWdhbmFuYS1zaXRlIiwic3RvcmFnZUJ1Y2tldCI6InBlZ2FuYW5hLXNpdGUuZmlyZWJhc2VzdG9yYWdlLmFwcCIsIm1lc3NhZ2luZ1NlbmRlcklkIjoiNTE3Mjg4MzM5Njc3IiwiYXBwSWQiOiIxOjUxNzIjg4MzM5Njc3OndlYjoyN2FmZTg1MDJlMzQwMmYyZmM1MzM0IiwibWVhc3VyZW1lbnRJZCI6IkctV0tKNDg5U1I0NSJ9";
-    const firebaseConfig = JSON.parse(atob(encodedConfig));
+    // Your web app's Firebase configuration - directly defined
+    const firebaseConfig = {
+      apiKey: "AIzaSyDy5bD6oiJX1ZoFKTxg2nifUy3yUrDwV-g",
+      authDomain: "peganana-site.firebaseapp.com",
+      projectId: "peganana-site",
+      storageBucket: "peganana-site.firebasestorage.app",
+      messagingSenderId: "517288339677",
+      appId: "1:517288339677:web:27afe8502e3402f2fc5334",
+      measurementId: "G-WKJ489SR45"
+    };
 
+    // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
 
     document.getElementById("login-form").addEventListener("submit", function (e) {
-      e.preventDefault();
+      e.preventDefault(); // Prevent default form submission
       const email = document.getElementById("email").value;
       const password = document.getElementById("password").value;
 
       firebase.auth().signInWithEmailAndPassword(email, password)
-        .then(() => {
+        .then((userCredential) => {
+          // Login successful
+          console.log("Login successful, user:", userCredential.user);
           window.location.href = "skipper-dashboard-8421.html";
         })
         .catch((error) => {
+          // Login failed
+          console.error("Login error:", error);
           alert("Login failed: " + error.message);
         });
     });
