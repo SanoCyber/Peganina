@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peganina Charter Fishing</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    #imageModal {
+      transition: opacity 0.3s ease-in-out;
+    }
+    #imageModal > div {
+      transition: transform 0.3s ease-in-out;
+    }
+    .weather-loading {
+        color: #6b7280;
+    }
+    .weather-error {
+        color: #ef4444;
+    }
+  </style>
+</head>
+<body class="bg-blue-50 text-gray-900 antialiased">
+  <header class="bg-white shadow-lg p-4 flex justify-between items-center sticky top-0 z-50">
+    <div class="flex items-center"> 
+      <img src="./images/my_logo.png" alt="Peganina Charters Logo" class="h-26 mr-10 sm:h-26">
+      <h1 class="text-xl sm:text-4xl font-bold text-blue-700">Peganina Charters</h1>
+    </div>
+    <nav>
+      <a href="/book.html" 
+         class="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold py-2 px-4 sm:px-5 rounded-lg shadow-md transform transition-all duration-150 ease-in-out hover:scale-105 focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:ring-opacity-75 active:scale-95 text-sm sm:text-base">
+         Book a Trip
+      </a>
+    </nav>
+  </header>
+
+  <section class="relative h-[90vh] bg-cover bg-center flex items-start justify-center text-white" style="background-image: url('./images/hero.png');">
+    <div class="absolute inset-0 bg-black bg-opacity-15"></div>
+    <div class="relative z-10 text-center px-4 pt-24 md:pt-32">
+      <h2 class="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-5 tracking-tight">
+        Fishing Adventures Off the Cornish Coast
+      </h2>
+      <p class="text-lg sm:text-xl md:text-2xl mb-8 max-w-2xl mx-auto">
+        Join Skipper Anthony aboard the Peganina for unforgettable trips
+      </p>
+      <a href="/book.html" 
+         class="inline-block bg-yellow-400 text-black font-bold px-8 py-4 rounded-lg shadow-xl hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 focus:ring-opacity-75 transform transition-all duration-200 ease-in-out hover:scale-105 active:scale-95 text-lg md:text-xl">
+         Book Your Adventure
+      </a>
+    </div>
+  </section>
+
+  <main class="py-12 px-6 max-w-7xl mx-auto">
+    <section class="mt-10">
+      <h3 class="text-3xl font-bold mb-10 text-center text-blue-800">Our Trip Options</h3>
+      <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        
+        <div class="bg-white rounded-xl shadow-lg p-6 transform transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-2 flex flex-col">
+          <h4 class="text-2xl font-semibold mb-3 text-blue-700">Mackerel Trips</h4>
+          <p class="text-gray-700 text-base flex-grow">Short and fun trips, perfect for families and beginners. High chance of catching! Hour and half trip. </p>
+          <p class="text-lg font-bold text-gray-800 mt-4">£20 pp / £200 boat</p>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-lg p-6 transform transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-2 flex flex-col">
+          <h4 class="text-2xl font-semibold mb-3 text-blue-700">Half-Day Reef/Wreck</h4>
+          <p class="text-gray-700 text-base flex-grow">Explore local reefs and wrecks. Target species include Pollack, Cod, and Bass.</p>
+          <p class="text-lg font-bold text-gray-800 mt-4">£40 pp / £400 boat</p>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-lg p-6 transform transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-2 flex flex-col">
+          <h4 class="text-2xl font-semibold mb-3 text-blue-700">All-Day Reef/Wreck</h4>
+          <p class="text-gray-700 text-base flex-grow">A full day adventure, venturing further to more productive fishing grounds.</p>
+          <p class="text-lg font-bold text-gray-800 mt-4">£75 pp / £650 boat</p>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-lg p-6 transform transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-2 flex flex-col">
+          <h4 class="text-2xl font-semibold mb-3 text-blue-700">Shark Fishing (Seasonal)</h4>
+          <p class="text-gray-700 text-base flex-grow">Experience the thrill of catching Blue Sharks and Porbeagles.</p>
+          <p class="text-lg font-bold text-gray-800 mt-4">£125 pp / £650 boat</p>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-lg p-6 transform transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-2 flex flex-col">
+          <h4 class="text-2xl font-semibold mb-3 text-blue-700">Tuna Trips (Licensed)</h4>
+          <p class="text-gray-700 text-base flex-grow">An adrenaline-pumping trip targeting Bluefin Tuna. Strictly regulated.</p>
+          <p class="text-lg font-bold text-gray-800 mt-4">£200 pp / £800 boat</p>
+        </div>
+        
+        <div class="bg-white rounded-xl shadow-lg p-6 transform transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-2 flex flex-col items-center justify-center border-2 border-gray-300 hover:border-blue-400">
+          <h4 class="text-2xl font-semibold mb-3 text-blue-600">Custom Charters</h4>
+          <p class="text-gray-700 text-base text-center">Have something else in mind? <br class="hidden sm:inline">Contact us for bespoke trips!</p>
+          <a href="/book.html#booking-form" class="mt-4 inline-block bg-blue-500 text-white font-semibold px-5 py-2 rounded-md shadow hover:bg-blue-600 transition-colors duration-150">Enquire Now</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-16 py-10 md:py-16 bg-white rounded-xl shadow-xl">
+      <div class="max-w-6xl mx-auto px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-blue-800">Your Skipper</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+          <div class="text-gray-700 text-lg leading-relaxed space-y-4 order-2 md:order-1">
+            <p>Anthony has been boat fishing since the age of 2, now aged 36, has gained a lot of experience and knowledge of UK waters, though he has fished and dived all over the world.</p>
+            <p>He was a very keen dinghy angler before starting his charter career at 22 whilst at university in the waters off the north coast of Cornwall, based out of Newquay, before returning home to work out of Rye but has been drawn back to the Cornish waters once more!</p>
+            <p>Anthony has also volunteered as a member of Dungeness and Newquay lifeboat crews for 18 years. His qualifications include RYA Advanced Powerboat and RYA Yachtmasters. He has also just completed 3 years on the Chart program tagging Bluefin tuna.</p>
+          </div>
+          <div class="order-1 md:order-2">
+            <img src="./images/catch.png" alt="Skipper Anthony with a catch" 
+                 class="rounded-lg shadow-2xl mx-auto w-full max-w-md object-cover cursor-pointer hover:opacity-80 transition-opacity duration-200" 
+                 style="aspect-ratio: 3/4;"
+                 onclick="openModal('./images/catch.png', 'Skipper Anthony with a catch')">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-16 py-10 md:py-16 bg-slate-50 rounded-xl shadow-xl">
+      <div class="max-w-6xl mx-auto px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-blue-800">The Peganina</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+          <div>
+            <img src="./images/harbour.png" alt="The Peganina charter boat in the harbour" 
+                 class="rounded-lg shadow-2xl mx-auto w-full max-w-xl object-cover object-bottom cursor-pointer hover:opacity-80 transition-opacity duration-200" 
+                 style="aspect-ratio: 16/10;"
+                 onclick="openModal('./images/harbour.png', 'The Peganina charter boat in the harbour')">
+          </div>
+          <div class="text-gray-700 text-lg leading-relaxed space-y-4">
+            <p>The Peganina is a fast Lochin 33 with a modern Iveco 280hp turbo-diesel engine and an advanced 3D electronic suite.</p>
+            <p>Coded Cat 2 night and day, up to 60 miles offshore with 12 passengers and two crew.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-16 py-10 md:py-16">
+      <div class="max-w-md mx-auto px-6 lg:px-8">
+        <div id="weather-widget" class="bg-white p-6 rounded-xl shadow-xl">
+          <h3 class="text-2xl font-bold text-blue-800 mb-4 text-center">Current Weather</h3>
+          <div id="weather-location-name" class="text-lg font-semibold text-gray-700 mb-1 text-center">Newquay, Cornwall</div>
+          <div id="weather-content" class="text-center weather-loading">
+            <p>Loading weather data...</p>
+          </div>
+          <p class="text-xs text-gray-400 mt-4 text-center">Weather data powered by OpenWeatherMap</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="text-center py-8 bg-gray-800 text-gray-400 mt-12">
+    <div class="space-y-3">
+      <p class="text-sm">&copy; 2025 Peganina Charters. All rights reserved.</p>
+      <p>
+        <a href="https://www.instagram.com/peganina_fishing/" target="_blank" rel="noopener noreferrer" 
+           class="inline-flex items-center text-gray-300 hover:text-yellow-400 transition-colors duration-150 ease-in-out text-sm group">
+           <svg class="w-5 h-5 mr-2 group-hover:fill-yellow-400 fill-gray-300 transition-colors duration-150 ease-in-out" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.059 1.689.073 4.948.073 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4c2.21 0 4 1.791 4 4s-1.79 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+           Follow us on Instagram
+        </a>
+      </p>
+      <p class="text-xs text-gray-500 mt-2">Website designed with care.</p>
+    </div>
+  </footer>
+
+  <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-85 hidden items-center justify-center z-[100] p-4 transition-opacity duration-300 ease-in-out opacity-0">
+    <div class="bg-white p-3 rounded-lg shadow-xl max-w-4xl w-auto max-h-[90vh] relative transform transition-transform duration-300 ease-in-out scale-95">
+      <img id="modalImage" src="" alt="Full size image" class="object-contain max-h-[calc(90vh-60px)] w-auto h-auto mx-auto rounded">
+      <p id="modalCaption" class="text-center text-sm text-gray-700 mt-3"></p>
+      <button id="closeModalButton" aria-label="Close image modal" class="absolute -top-3 -right-3 text-white bg-red-600 hover:bg-red-700 rounded-full p-1 leading-none text-2xl font-bold w-9 h-9 flex items-center justify-center shadow-lg">&times;</button>
+    </div>
+  </div>
+
+  <script>
+    // Lightbox Modal JavaScript
+    const imageModal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    const modalCaption = document.getElementById('modalCaption');
+    const closeModalButton = document.getElementById('closeModalButton');
+
+    function openModal(imgSrc, captionText) {
+      if (imageModal && modalImage && modalCaption) {
+        modalImage.src = imgSrc;
+        modalImage.alt = captionText;
+        modalCaption.textContent = captionText;
+        imageModal.classList.remove('hidden', 'opacity-0');
+        imageModal.classList.add('flex');
+        void imageModal.offsetWidth; 
+        imageModal.classList.add('opacity-100');
+        imageModal.querySelector('div').classList.remove('scale-95');
+        imageModal.querySelector('div').classList.add('scale-100');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeModalNow() {
+      if (imageModal) {
+        imageModal.classList.add('opacity-0');
+        imageModal.querySelector('div').classList.add('scale-95');
+        imageModal.querySelector('div').classList.remove('scale-100');
+        setTimeout(() => {
+           imageModal.classList.add('hidden');
+           imageModal.classList.remove('flex');
+        }, 300);
+        document.body.style.overflow = 'auto';
+      }
+    }
+
+    if (closeModalButton) {
+      closeModalButton.addEventListener('click', closeModalNow);
+    }
+    if (imageModal) {
+      imageModal.addEventListener('click', function(event) {
+        if (event.target === imageModal) {
+          closeModalNow();
+        }
+      });
+    }
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape' && imageModal && !imageModal.classList.contains('hidden')) {
+        closeModalNow();
+      }
+    });
+
+    // Weather Widget JavaScript
+    document.addEventListener('DOMContentLoaded', function() {
+      fetchWeather();
+    });
+
+    function fetchWeather() {
+      const apiKey = '377cb061d907793207495efafecd11bb'; 
+      const city = 'Newquay'; 
+      const countryCode = 'GB';
+      const weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city},${countryCode}&appid=${apiKey}&units=metric`;
+      
+      const weatherContentEl = document.getElementById('weather-content');
+      const weatherLocationNameEl = document.getElementById('weather-location-name');
+      
+      if (weatherLocationNameEl) weatherLocationNameEl.textContent = `${city}, Cornwall`;
+
+      fetch(weatherApiUrl)
+        .then(response => {
+          if (!response.ok) {
+            return response.json().then(errData => {
+                throw new Error(`HTTP error! status: ${response.status}, message: ${errData.message || response.statusText}`);
+            });
+          }
+          return response.json();
+        })
+        .then(data => {
+          if (weatherContentEl) {
+            if (data.cod === 200) {
+              const temp = Math.round(data.main.temp);
+              const description = data.weather[0].description;
+              const iconCode = data.weather[0].icon;
+              const windSpeed = Math.round(data.wind.speed * 2.237); 
+              const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
+
+              weatherContentEl.innerHTML = `
+                <div class="flex items-center justify-center mb-2">
+                  <img src="${iconUrl}" alt="${description}" class="w-16 h-16 -ml-2 -mr-1">
+                  <div>
+                    <p class="text-4xl font-bold text-gray-800">${temp}°C</p>
+                    <p class="text-gray-600 capitalize text-sm">${description}</p>
+                  </div>
+                </div>
+                <p class="text-sm text-gray-500">Wind: ${windSpeed} mph</p>
+              `;
+              weatherContentEl.classList.remove('weather-loading');
+            } else {
+                weatherContentEl.innerHTML = `<p class="weather-error">Could not retrieve weather: ${data.message || 'Unknown API error'}</p>`;
+                console.error("OpenWeatherMap API error:", data.message);
+            }
+          }
+        })
+        .catch(error => {
+          console.error('Error fetching weather data:', error);
+          if (weatherContentEl) {
+            weatherContentEl.innerHTML = `<p class="weather-error">Could not load weather data. Error: ${error.message}. Please check console.</p>`;
+          }
+        });
+    }
+  </script>
+
+</body>
+</html>

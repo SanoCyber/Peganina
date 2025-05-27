@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-auth-compat.js"></script>
+</head>
+<body class="bg-blue-50 flex items-center justify-center min-h-screen">
+  <div class="bg-white shadow-lg rounded-lg p-6 w-full max-w-md">
+    <h2 class="text-2xl font-bold mb-4 text-center">Admin Login</h2>
+    <form id="login-form" class="space-y-4">
+      <div>
+        <label class="block text-sm font-medium">Email</label>
+        <input type="email" id="email" class="w-full mt-1 p-2 border rounded" required>
+      </div>
+      <div>
+        <label class="block text-sm font-medium">Password</label>
+        <input type="password" id="password" class="w-full mt-1 p-2 border rounded" required>
+      </div>
+      <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">Login</button>
+    </form>
+  </div>
+
+  <script>
+    // Your web app's Firebase configuration (NEW)
+    const firebaseConfig = {
+      apiKey: "AIzaSyAL5YZbBEFkNnpsC0S3iVxgHpcOgqbZGvw",
+      authDomain: "peganina-797dd.firebaseapp.com",
+      projectId: "peganina-797dd",
+      storageBucket: "peganina-797dd.firebasestorage.app",
+      messagingSenderId: "141039015162",
+      appId: "1:141039015162:web:c8a48f0ae54a6935d62543",
+      measurementId: "G-P6H7CM4B5J" // Optional, but included as per your snippet
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    document.getElementById("login-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      firebase.auth().signInWithEmailAndPassword(email, password)
+        .then(() => {
+          window.location.href = "skipper-dashboard-8421.html"; // Ensure this filename is correct
+        })
+        .catch((error) => {
+          alert("Login failed: " + error.message);
+          console.error("Login error details:", error); // Added for more detailed error logging
+        });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-auth-compat.js"></script>
+</head>
+<body class="bg-blue-50 text-gray-900">
+  <script>
+    // Your web app's Firebase configuration (NEW)
+    const firebaseConfig = {
+      apiKey: "AIzaSyAL5YZbBEFkNnpsC0S3iVxgHpcOgqbZGvw",
+      authDomain: "peganina-797dd.firebaseapp.com",
+      projectId: "peganina-797dd",
+      storageBucket: "peganina-797dd.firebasestorage.app",
+      messagingSenderId: "141039015162",
+      appId: "1:141039015162:web:c8a48f0ae54a6935d62543",
+      measurementId: "G-P6H7CM4B5J"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    firebase.auth().onAuthStateChanged((user) => {
+      if (!user) {
+        window.location.href = "skipper-login.html"; 
+      } else {
+        console.log("User signed in:", user.email);
+      }
+    });
+
+    function logout() {
+      firebase.auth().signOut().then(() => {
+        console.log("Logged out successfully.");
+        window.location.href = "skipper-login.html"; 
+      }).catch((error) => {
+        console.error("Logout error:", error);
+        alert("Logout failed: " + error.message);
+      });
+    }
+  </script>
+
+  <header class="bg-white shadow-md p-4 flex justify-between items-center">
+    <h1 class="text-xl font-bold">Admin Dashboard</h1>
+    <nav class="space-x-4">
+      <a href="/index.html" class="text-blue-600 hover:underline">View Site Home</a>
+      <a href="/book.html" class="text-blue-600 hover:underline">View Booking Page</a>
+    </nav>
+    <button onclick="logout()" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Logout</button>
+  </header>
+
+  <main class="p-6 max-w-4xl mx-auto">
+    <p class="mt-4 mb-8">Welcome, skipper. Use this panel to manage your trips and bookings.</p>
+
+    <section class="mb-10">
+      <h2 class="text-2xl font-semibold mb-6">Add New Trip Slot</h2>
+      <form id="slot-form" class="bg-white p-6 rounded shadow-md space-y-4">
+        <div>
+          <label for="date" class="block text-sm font-medium text-gray-700">Date:</label>
+          <input type="date" name="date" id="date" required class="w-full mt-1 p-2 border rounded">
+        </div>
+        <div>
+          <label for="time" class="block text-sm font-medium text-gray-700">Time (e.g., 09:00 AM):</label>
+          <input type="text" name="time" id="time" required class="w-full mt-1 p-2 border rounded" placeholder="e.g., 09:00 AM or 1:30 PM">
+        </div>
+        <div>
+          <label for="type" class="block text-sm font-medium text-gray-700">Trip Type:</label>
+          <select name="type" id="type" required class="w-full mt-1 p-2 border rounded">
+            <option value="">Select a trip type</option>
+            <option value="Mackerel Trip">Mackerel Trip</option>
+            <option value="Half-Day Reef/Wreck">Half-Day Reef/Wreck</option>
+            <option value="All-Day Reef/Wreck">All-Day Reef/Wreck</option>
+            <option value="Shark Fishing">Shark Fishing</option>
+            <option value="Tuna Trip">Tuna Trip</option>
+            <option value="Custom/Private">Custom/Private</option>
+          </select>
+        </div>
+        <div>
+          <label for="max" class="block text-sm font-medium text-gray-700">Max People:</label>
+          <input type="number" name="max" id="max" required class="w-full mt-1 p-2 border rounded" min="1">
+        </div>
+        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Add Trip Slot</button>
+      </form>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-semibold mb-6">Manage Existing Trip Slots</h2>
+      <div id="admin-trip-list" class="space-y-4">
+        <p class="text-gray-600">Loading trip slots...</p>
+      </div>
+      <p class="mt-4 text-sm text-gray-600">Note: The "Delete" button currently only removes the trip from this view temporarily. It does not permanently delete it from the database.</p>
+    </section>
+
+  </main>
+
+  <footer class="text-center text-sm py-4 text-gray-600 mt-10">
+    &copy; 2025 Peganina Charters. All rights reserved.
+  </footer>
+
+  <script src="/main.js"></script>
+</body>
+</html>

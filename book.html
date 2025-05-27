@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book a Trip - Peganina Charters</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Additional style for select arrow, if needed, or focus states */
+    .custom-select-arrow { /* Basic example, can be enhanced */
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%236b7280'%3E%3Cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clip-rule='evenodd' /%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 0.75rem center;
+        background-size: 1.5em 1.5em;
+    }
+  </style>
+</head>
+<body class="bg-blue-50 text-gray-900 antialiased">
+  <header class="bg-white shadow-lg p-4 flex justify-between items-center sticky top-0 z-50">
+    <h1 class="text-2xl font-bold text-blue-700">Book Your Peganina Trip</h1>
+    <nav>
+      <a href="/index.html" 
+         class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-5 rounded-lg shadow-md transform transition-all duration-150 ease-in-out hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 active:scale-95">
+         Home
+      </a>
+    </nav>
+  </header>
+
+  <main class="py-10 px-6 max-w-2xl mx-auto">
+    <section class="mb-10">
+      <h2 class="text-3xl font-bold mb-6 text-center text-blue-800">Available Trips</h2>
+      <div id="trip-list" class="space-y-4">
+        <p id="trip-list-status" class="text-center text-gray-600 p-4 bg-white rounded-lg shadow">Loading available trips...</p>
+      </div>
+    </section>
+
+    <section>
+      <h3 class="text-3xl font-bold mt-10 mb-6 text-center text-blue-800">Book Your Spot</h3>
+      <form id="booking-form" class="bg-white p-6 sm:p-8 rounded-xl shadow-2xl space-y-6">
+        <div>
+          <label for="name" class="block text-sm font-semibold text-gray-700 mb-1">Your Name (Primary Booker):</label>
+          <input type="text" name="name" id="name" required class="w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow duration-150">
+        </div>
+        <div>
+          <label for="email" class="block text-sm font-semibold text-gray-700 mb-1">Email:</label>
+          <input type="email" name="email" id="email" required class="w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow duration-150">
+        </div>
+        <div>
+          <label for="phone" class="block text-sm font-semibold text-gray-700 mb-1">Phone:</label>
+          <input type="text" name="phone" id="phone" required class="w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow duration-150">
+        </div>
+        <div>
+          <label for="num_people" class="block text-sm font-semibold text-gray-700 mb-1">Number of People (including yourself):</label>
+          <input type="number" name="num_people" id="num_people" required class="w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow duration-150" min="1" value="1">
+        </div>
+        <div id="additional-names-container" class="hidden">
+          <label for="additional_names" class="block text-sm font-semibold text-gray-700 mb-1">Names of Additional Guests (one per line):</label>
+          <textarea name="additional_names" id="additional_names" class="w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow duration-150" rows="3" placeholder="e.g., Jane Doe&#x0a;John Smith Jr."></textarea>
+        </div>
+        <div>
+          <label for="trip-select" class="block text-sm font-semibold text-gray-700 mb-1">Select Trip:</label>
+          <select name="trip" id="trip-select" required class="w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow duration-150 appearance-none custom-select-arrow bg-white">
+            <option value="">Loading trips...</option>
+          </select>
+        </div>
+        
+        <button type="submit" id="submit-booking-button" 
+                class="w-full bg-yellow-400 text-black font-bold px-8 py-3 rounded-lg shadow-lg hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 focus:ring-opacity-50 transform transition-all duration-150 ease-in-out hover:scale-105 active:scale-95 text-lg">
+                Book Now
+        </button>
+        
+        <div id="booking-feedback" class="mt-4 text-center min-h-[1.5em]"></div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="text-center py-8 bg-gray-800 text-gray-400 mt-12">
+    <div class="space-y-3">
+      <p class="text-sm">&copy; 2025 Peganina Charters. All rights reserved.</p>
+      <p>
+        <a href="https://www.instagram.com/peganina_fishing/" target="_blank" rel="noopener noreferrer" 
+           class="inline-flex items-center text-gray-300 hover:text-yellow-400 transition-colors duration-150 ease-in-out text-sm group">
+           <svg class="w-5 h-5 mr-2 group-hover:fill-yellow-400 fill-gray-300 transition-colors duration-150 ease-in-out" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.059 1.689.073 4.948.073 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4c2.21 0 4 1.791 4 4s-1.79 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+           Follow us on Instagram
+        </a>
+      </p>
+      <p class="text-xs text-gray-500 mt-2">Website designed with care.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Small script to show/hide additional names field based on number of people
+    document.addEventListener('DOMContentLoaded', function() {
+      const numPeopleInput = document.getElementById('num_people');
+      const additionalNamesContainer = document.getElementById('additional-names-container');
+      const additionalNamesTextarea = document.getElementById('additional_names');
+
+      if (numPeopleInput && additionalNamesContainer) {
+        function toggleAdditionalNames() {
+          if (parseInt(numPeopleInput.value, 10) > 1) {
+            additionalNamesContainer.classList.remove('hidden');
+          } else {
+            additionalNamesContainer.classList.add('hidden');
+            if (additionalNamesTextarea) {
+              additionalNamesTextarea.value = ''; 
+            }
+          }
+        }
+        numPeopleInput.addEventListener('input', toggleAdditionalNames);
+        toggleAdditionalNames(); 
+      }
+    });
+  </script>
+  <script src="/main.js"></script>
+</body>
+</html>
